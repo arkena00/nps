@@ -1,0 +1,4 @@
+git init
+git remote add https://www.github.com/$ncs.entity.name
+git push origin
+git branch dev
