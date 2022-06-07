@@ -1,0 +1,21 @@
+name: $ncs.project.name
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  nxi:
+    strategy:
+      matrix:
+        config:
+          - { name: "Windows", os: windows-latest }
+          - { name: "Linux", os: ubuntu-latest }
+          - { name: "MacOS", os: macos-latest }
+
+    runs-on: ${{ matrix.config.os }}
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Build $ncs.project.name
+        run: $ncs.project.build_system
